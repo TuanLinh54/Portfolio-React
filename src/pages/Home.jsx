@@ -164,7 +164,7 @@ const Home = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <FaGithub />
+                  <FaGithub className="" />
                 </a>
                 <a
                   className="p-3 hover:text-cyan-400"

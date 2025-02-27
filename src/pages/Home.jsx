@@ -6,7 +6,6 @@ import tlshop from "../assets/rlshop.png";
 import fccamp from "../assets/freecodecamp-certifies.png";
 import jsbasic from "../assets/Javascript basic - hackerrank.png";
 import reacthkr from "../assets/react-hackerrank.png";
-import avt from "../assets/avt.jpg";
 import {
   FaGithub,
   FaExternalLinkAlt,
@@ -25,7 +24,7 @@ import { motion } from "framer-motion";
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center p-6">
+    <div className="min-h-screen bg-gradient-to-r from-gray-800 to-gray-900 text-white flex flex-col items-center p-6">
       {/* Header Section */}
       <header className="text-center mb-10">
         <h1 className="text-5xl font-bold text-cyan-400 animate-pulse">
@@ -36,6 +35,7 @@ const Home = () => {
 
       {/* About Section */}
       <motion.section
+        id="about"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -55,42 +55,67 @@ const Home = () => {
       </motion.section>
 
       {/* Skills Section */}
-      <section className="w-full max-w-4xl mb-10">
+      <motion.section
+        id="skills"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="w-full max-w-4xl mb-10"
+      >
         <h2 className="text-3xl font-semibold text-center mb-4">Skills</h2>
         <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-gray-800 p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105 flex flex-col items-center">
-            <FaHtml5 size={40} className="text-orange-500 mb-2" />
-            <h3 className="text-xl font-semibold">HTML</h3>
-          </div>
-          <div className="bg-gray-800 p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105 flex flex-col items-center">
-            <FaCss3Alt size={40} className="text-blue-500 mb-2" />
-            <h3 className="text-xl font-semibold">CSS</h3>
-          </div>
-          <div className="bg-gray-800 p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105 flex flex-col items-center">
-            <FaJs size={40} className="text-yellow-500 mb-2" />
-            <h3 className="text-xl font-semibold">JavaScript</h3>
-          </div>
-          <div className="bg-gray-800 p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105 flex flex-col items-center">
-            <FaReact size={40} className="text-blue-400 mb-2" />
-            <h3 className="text-xl font-semibold">ReactJS</h3>
-          </div>
-          <div className="bg-gray-800 p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105 flex flex-col items-center">
-            <FaNodeJs size={40} className="text-green-500 mb-2" />
-            <h3 className="text-xl font-semibold">NodeJS</h3>
-          </div>
-          <div className="bg-gray-800 p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105 flex flex-col items-center">
-            <FaDatabase size={40} className="text-yellow-600 mb-2" />
-            <h3 className="text-xl font-semibold">Databases</h3>
-          </div>
-          <div className="bg-gray-800 p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105 flex flex-col items-center">
-            <FaGitAlt size={40} className="text-orange-400 mb-2" />
-            <h3 className="text-xl font-semibold">Git/GitHub</h3>
-          </div>
+          {[
+            {
+              icon: <FaHtml5 size={40} className="text-orange-500 mb-2" />,
+              title: "HTML",
+            },
+            {
+              icon: <FaCss3Alt size={40} className="text-blue-500 mb-2" />,
+              title: "CSS",
+            },
+            {
+              icon: <FaJs size={40} className="text-yellow-500 mb-2" />,
+              title: "JavaScript",
+            },
+            {
+              icon: <FaReact size={40} className="text-blue-400 mb-2" />,
+              title: "ReactJS",
+            },
+            {
+              icon: <FaNodeJs size={40} className="text-green-500 mb-2" />,
+              title: "NodeJS",
+            },
+            {
+              icon: <FaDatabase size={40} className="text-yellow-600 mb-2" />,
+              title: "Databases",
+            },
+            {
+              icon: <FaGitAlt size={40} className="text-orange-400 mb-2" />,
+              title: "Git/GitHub",
+            },
+          ].map((skill, index) => (
+            <motion.div
+              key={index}
+              className="bg-gray-800 p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105 flex flex-col items-center"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              {skill.icon}
+              <h3 className="text-xl font-semibold">{skill.title}</h3>
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* Projects Section */}
-      <section className="w-full max-w-4xl mb-10">
+      <motion.section
+        id="projects"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="w-full max-w-4xl mb-10"
+      >
         <h2 className="text-3xl font-semibold text-center mb-4">Projects</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {[
@@ -138,9 +163,12 @@ const Home = () => {
               live: "https://tl-shop-fe.vercel.app/",
             },
           ].map((project, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-gray-800 p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <img
                 src={project.img}
@@ -164,7 +192,7 @@ const Home = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <FaGithub className="" />
+                  <FaGithub />
                 </a>
                 <a
                   className="p-3 hover:text-cyan-400"
@@ -175,13 +203,19 @@ const Home = () => {
                   <FaExternalLinkAlt />
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* Certificate Section */}
-      <section className="w-full max-w-4xl mb-10">
+      <motion.section
+        id="certificates"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="w-full max-w-4xl mb-10"
+      >
         <h2 className="text-3xl font-semibold text-center mb-4">
           Certificates
         </h2>
@@ -203,9 +237,12 @@ const Home = () => {
               link: "https://www.hackerrank.com/certificates/ff2564315adc",
             },
           ].map((certificate, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-gray-800 p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <img
                 src={certificate.img}
@@ -220,13 +257,19 @@ const Home = () => {
               >
                 {certificate.title}
               </a>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* Contact Section */}
-      <section className="w-full max-w-4xl mb-10">
+      <motion.section
+        id="contact"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="w-full max-w-4xl mb-10"
+      >
         <h2 className="text-3xl font-semibold text-center mb-4">Contact</h2>
         <div className="flex flex-col items-center">
           <p className="text-gray-400 mb-2">Feel free to reach out to me!</p>
@@ -263,7 +306,7 @@ const Home = () => {
             </a>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Footer */}
       <footer className="mt-10 text-center text-gray-500">

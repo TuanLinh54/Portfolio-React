@@ -22,6 +22,29 @@ import {
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
+const fadeInVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  exit: { opacity: 0, y: -50, transition: { duration: 0.8 } },
+};
+
+const Section = ({ id, title, children }) => {
+  return (
+    <motion.section
+      id={id}
+      initial="hidden"
+      whileInView="visible"
+      exit="exit"
+      viewport={{ once: false, amount: 0.2 }}
+      variants={fadeInVariants}
+      className="w-full max-w-4xl mb-10"
+    >
+      <h2 className="text-3xl font-semibold text-center mb-4">{title}</h2>
+      {children}
+    </motion.section>
+  );
+};
+
 const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-r from-gray-800 to-gray-900 text-white flex flex-col items-center p-6">
@@ -34,14 +57,11 @@ const Home = () => {
       </header>
 
       {/* About Section */}
-      <motion.section
+      <Section
         id="about"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        title="About Me"
         className="w-full max-w-4xl text-center mb-10"
       >
-        <h2 className="text-3xl font-semibold mt-4">About Me</h2>
         <p className="text-gray-400 mt-2">
           I am a recent Information Technology graduate with a strong foundation
           in software development. I am eager to apply my knowledge in a
@@ -52,13 +72,14 @@ const Home = () => {
           highly motivated, detail-oriented, and passionate about building
           efficient and user-friendly applications.
         </p>
-      </motion.section>
+      </Section>
 
       {/* Skills Section */}
-      <motion.section
+      <Section
         id="skills"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8 }}
         className="w-full max-w-4xl mb-10"
       >
@@ -106,13 +127,14 @@ const Home = () => {
             </motion.div>
           ))}
         </div>
-      </motion.section>
+      </Section>
 
       {/* Projects Section */}
-      <motion.section
+      <Section
         id="projects"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8 }}
         className="w-full max-w-4xl mb-10"
       >
@@ -206,13 +228,14 @@ const Home = () => {
             </motion.div>
           ))}
         </div>
-      </motion.section>
+      </Section>
 
       {/* Certificate Section */}
-      <motion.section
+      <Section
         id="certificates"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8 }}
         className="w-full max-w-4xl mb-10"
       >
@@ -260,13 +283,14 @@ const Home = () => {
             </motion.div>
           ))}
         </div>
-      </motion.section>
+      </Section>
 
       {/* Contact Section */}
-      <motion.section
+      <Section
         id="contact"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8 }}
         className="w-full max-w-4xl mb-10"
       >
@@ -306,7 +330,7 @@ const Home = () => {
             </a>
           </div>
         </div>
-      </motion.section>
+      </Section>
 
       {/* Footer */}
       <footer className="mt-10 text-center text-gray-500">
